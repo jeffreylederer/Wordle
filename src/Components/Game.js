@@ -8,15 +8,14 @@ class Game extends React.Component {
 	constructor(props) {
 			super(props);
 			this.state = {
-				aline: Array(6).fill(""),
-				currentLineNo: 0,
-				currentWord: "a",
-				win : false
+				lines: Array(6).fill("abcd"),
+				currentLineNo: 0
 		};
 	}
 
 	handleKey = e => {
-		if(this.state.currentLineNo == 6 || this.state.win)
+		let currentWord = this.state.lines[this.state.currentLineNo]
+		if(this.state.currentLineNo == 6)
 			return;
 		if(e.key === 'Shift') {
 			return;
@@ -24,18 +23,22 @@ class Game extends React.Component {
 
 		switch(e.key) {
 			case 'Enter': // CR
-				if(this.state.currentWord.length === 5) {
-					this.state.aline[this.state.currentLineNo] = this.state.currentWord;
-					this.state.currentWord="";
-					this.state.currentLineNo += 1;
+				if(currentWord.length == 5) {
+					this.state.lines[this.state.currentLineNo] = currentWord;
+					currentWord="";
+					let currentLineNo = this.state.currentLineNo+1;
+					this.setState({currentLineNo: currentLineNo});
 				}
 				break;
 			case 'Backspace': //bS
-				if(this.state.currentWord.length > 0) {
-					this.state.currentWord = this.state.currentWord.substr(0, this.state.currentWord.length-1);
+				if(currentWord.length > 0) {
+					currentWord = currentWord.substr(0, currentWord.length-1);
 				}
 				break;
 			default:
+				if(currentWord.length == 5) {
+					return;
+				}
 				let code = e.key.charCodeAt(0);
 				if(code >= 65 && code <= 90) { // upper case
 					code = code + 32;
@@ -46,19 +49,19 @@ class Game extends React.Component {
 				else {
 					return;
 				}
-				let codeKey = String.fromCharCode(code);
-			    if(this.state.currentWord.length < 5) {
-					this.state.currentWord += codeKey;
-				}
+			    currentWord += String.fromCharCode(code);
 				break;	
 		}
-		alert(this.state.currentWord);
+		const lines = this.state.lines.slice();
+		lines[this.state.currentLineNo] = currentWord;
+		this.setState({lines: lines});
 	}
+	
    
 	render() {
 		return (
-    		<div onKeyDown={this.handleKey} tabIndex="0">
-			 <BoardContainer />
+    		<div onKeyDown={(e)=>this.handleKey(e)} tabIndex="0">
+			 <BoardContainer lines={this.state.lines}/>
 			 <br/> <br/>
 			 <Keyboard />
 	    	</div>

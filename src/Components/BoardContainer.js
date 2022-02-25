@@ -1,20 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import BoardRow from './BoardRow';
 import './wordle.css';
 
 
 
 class BoardContainer extends React.Component {
-	render() {
+	render(props) {
     	return (
     		<div className="board">
-			    <BoardRow row="1" />
-			    <BoardRow row="2" />
-			    <BoardRow row="3" />
-			    <BoardRow row="4" />
-				<BoardRow row="5" />
-				<BoardRow row="6" />
+				<BoardRow line={this.props.lines[0]}/>
+			    <BoardRow line={this.props.lines[1]}/>
+			    <BoardRow line={this.props.lines[2]}/>
+			    <BoardRow line={this.props.lines[3]}/>
+			    <BoardRow line={this.props.lines[4]}/>
+				<BoardRow line={this.props.lines[5]}/>
 	    	</div>
 		);
 	}
