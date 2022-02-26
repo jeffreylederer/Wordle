@@ -1,13 +1,13 @@
 import Keyboardrow from './Keyboardrow';
 import './wordle.css';
 
-function Keyboard({Click, foundLetters, correctLetters}) {	
+function Keyboard({Click, foundLetters, correctLetters, usedLetters}) {	
 
 	return (
 		<div className='keyboard' >
-			<Keyboardrow letters='qwertyuiop' onClick={Click} foundLetters={foundLetters} correctLetters={correctLetters}/>
-			<Keyboardrow letters='asdfghjkl'  onClick={Click} foundLetters={foundLetters} correctLetters={correctLetters}/>
-			<Keyboardrow letters='zxcvbnm'    onClick={Click} foundLetters={foundLetters} correctLetters={correctLetters}/>
+			<Keyboardrow letters='qwertyuiop' onClick={Click} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
+			<Keyboardrow letters='asdfghjkl'  onClick={Click} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
+			<Keyboardrow letters='zxcvbnm'    onClick={Click} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
 		</div>
   );
 }

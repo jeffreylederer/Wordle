@@ -12,7 +12,8 @@ class Game extends React.Component {
 				theCurrentLineNo: 0,
 				win: false,
 				foundLetters: "",
-				correctLetters: ""
+				correctLetters: "",
+				usedLetters: ""
 		};
 		
 	}
@@ -47,8 +48,7 @@ class Game extends React.Component {
 		let lines = this.state.theLines.slice(0,6);
 		lines[this.state.theCurrentLineNo] = currentWord;
 		this.setState({theLines : lines.slice(0,6)});
-		if(this.props.answer === currentWord)
-			this.setState({win : true});
+
 	}
 
 	
@@ -91,14 +91,14 @@ class Game extends React.Component {
 		let lines = this.state.theLines.slice(0,6);
 		lines[this.state.theCurrentLineNo] = currentWord;
 		this.setState({theLines : lines.slice(0,6)});
-		if(this.props.answer === currentWord)
-			this.setState({win : true});
+		
 	}
 	
 	CheckLetters = () => {
 		let currentWord = this.state.theLines[this.state.theCurrentLineNo];
 		let correctLetters=this.state.correctLetters;
 		let foundLetters=this.state.foundLetters;
+		let usedLetters = this.state.usedLetters;
 		for(let i=0; i< 5; i++) {
 			let letter = currentWord.substr(i,1);
 			if(this.props.answer.substr(i,1) === letter) {
@@ -113,11 +113,18 @@ class Game extends React.Component {
 					foundLetters = foundLetters.concat(letter);
 				}
 			}
+			
+			if(correctLetters.search(letter) < 0 && foundLetters.search(letter) < 0 && usedLetters.search(letter) < 0) {
+				usedLetters = usedLetters.concat(letter);
+			}
 		}
 		let CurrentLineNo = this.state.theCurrentLineNo+1;
-		this.setState({correctLetters:correctLetters},
-		              {foundLetters:foundLetters},
-					  {theCurrentLineNo: CurrentLineNo});
+		this.setState({correctLetters:correctLetters,
+		               foundLetters:foundLetters,
+					   usedLetters:usedLetters,
+					   theCurrentLineNo: CurrentLineNo});
+		if(this.props.answer === currentWord)
+			this.setState({win : true});
 	}
 
 	
@@ -130,7 +137,7 @@ class Game extends React.Component {
      			
        			<BoardContainer lines={this.state.theLines} currentWord={currentWord} answer={this.props.answer} />
 				<br/><br/>
-				<Keyboard Click={(e) => this.handleButton(e)}  foundLetters={this.state.foundLetters} correctLetters={this.state.correctLetters} />
+				<Keyboard Click={(e) => this.handleButton(e)}  foundLetters={this.state.foundLetters} correctLetters={this.state.correctLetters} usedLetters={this.state.usedLetters} />
 				
 				
 			</div>
