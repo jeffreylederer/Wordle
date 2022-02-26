@@ -38,7 +38,7 @@ div.tile {
 		width: 62px;
 		height: 62px;
 		margin: 2px 2px 2px 2px;
-		color: white;
+		color: black;
 		font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
 		display: inline-block;
 		font-size: 2rem;
@@ -85,11 +85,7 @@ div.keyboardrow {
 	margin: 0 auto 8px;
 }
 
-dev.spacerhalf {
-	flex: 0.5;
-	display: block;
-	margin: 0 8px;
-}
+
 
 button.keybutton {
 	border: 1px solid transparent;
@@ -106,8 +102,43 @@ button.keybutton {
 	text-transform: uppercase;
 	box-sizing: border-box;
 	text-align: center;
+	cursor: pointer;
+	user-select: none;
+	border-radius: 4px;
 }
 
+button.largebutton {
+	border: 1px solid transparent;
+	width: 65px;
+	height: 58px;
+	margin: 2px 2px 2px 2px;
+	color: black;
+	font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+	display: inline-block;
+	font-size: 1rem;
+	line-height: 2rem;
+	font-weight: bold;
+	vertical-align: middle;
+	text-transform: uppercase;
+	box-sizing: border-box;
+	text-align: center;
+	cursor: pointer;
+	user-select: none;
+	border-radius: 4px;
+}
+
+span.halfspacer {
+	border: 0px solid transparent;
+	width: 40px;
+	height: 58px;
+	margin: 2px 2px 2px 2px;
+	backgroup-color: transparent;
+	color: transparent;
+	display: inline-block;
+	font-size: 2rem;
+	line-height: 2rem;
+	box-sizing: border-box;
+}
 
   
 

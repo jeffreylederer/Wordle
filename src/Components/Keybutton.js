@@ -1,12 +1,12 @@
-import React from 'react';
 import './wordle.css';
 
-class Keybutton extends React.Component {
-	render() {
-    	return (
-		    <button  className='keybutton'>{this.props.datakey}</button>
-		);
-	}
+function Keybutton ({datakey, onClick}) {
+	return (
+		<button className='keybutton' onClick={onClick}>
+			{datakey}
+		</button>
+	);
 }
+
 
 export default Keybutton;
