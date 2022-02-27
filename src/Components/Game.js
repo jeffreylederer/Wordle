@@ -1,27 +1,26 @@
 import React from 'react';
-import BoardContainer from './BoardContainer';
+import GameBoard from './GameBoard';
 import Keyboard from './Keyboard';
-//import keydown from 'react-keydown';
 import './wordle.css';
 
 class Game extends React.Component {
 	constructor(props) {
 			super(props);
 			this.state = {
-				theLines: Array(6).fill(""),
+				lines: Array(6).fill(""),
 				theCurrentLineNo: 0,
 				win: false,
 				foundLetters: "",
 				correctLetters: "",
-				usedLetters: ""
+				usedLetters: "",
+				currentWord: ""
 		};
-		
-	}
+ 	}
 
 	handleButton = e =>{
 		if(this.state.win)
 			return;
-		let currentWord = this.state.theLines[this.state.theCurrentLineNo];
+		let currentWord = this.state.currentWord;
 		if(this.state.theCurrentLineNo === 6) {
 			return;
 		}
@@ -45,17 +44,14 @@ class Game extends React.Component {
 			    currentWord += e;
 				break;	
 		}
-		let lines = this.state.theLines.slice(0,6);
-		lines[this.state.theCurrentLineNo] = currentWord;
-		this.setState({theLines : lines.slice(0,6)});
-
+		this.setState( {currentWord: currentWord} );
 	}
 
 	
 	handleKey = e => {
 		if(this.state.win)
 			return;
-		let currentWord = this.state.theLines[this.state.theCurrentLineNo];
+		let currentWord = this.state.currentWord;
 		if(this.state.theCurrentLineNo === 6)
 			return;
 		if(e.key === 'Shift' ) {
@@ -88,14 +84,12 @@ class Game extends React.Component {
 			    currentWord += String.fromCharCode(code);
 				break;	
 		}
-		let lines = this.state.theLines.slice(0,6);
-		lines[this.state.theCurrentLineNo] = currentWord;
-		this.setState({theLines : lines.slice(0,6)});
-		
+		this.setState( {currentWord: currentWord} );
+
 	}
 	
 	CheckLetters = () => {
-		let currentWord = this.state.theLines[this.state.theCurrentLineNo];
+		let currentWord = this.state.currentWord;
 		let correctLetters=this.state.correctLetters;
 		let foundLetters=this.state.foundLetters;
 		let usedLetters = this.state.usedLetters;
@@ -118,29 +112,31 @@ class Game extends React.Component {
 				usedLetters = usedLetters.concat(letter);
 			}
 		}
+		let lines = this.state.lines.slice(0,6);
+		lines[this.state.theCurrentLineNo] = currentWord;
 		let CurrentLineNo = this.state.theCurrentLineNo+1;
 		this.setState({correctLetters:correctLetters,
 		               foundLetters:foundLetters,
 					   usedLetters:usedLetters,
-					   theCurrentLineNo: CurrentLineNo});
+					   theCurrentLineNo: CurrentLineNo,
+					   lines: lines,
+					   currentWord: ""});
 		if(this.props.answer === currentWord)
 			this.setState({win : true});
 	}
 
 	
-   //<Keyboard Click={(e) => this.handleButton(e)} />
    
 	render() {
-		let currentWord = this.state.theLines[this.state.theCurrentLineNo];
 		return (
 	   		<div onKeyDown={(e)=>this.handleKey(e)} tabIndex="-1">  
      			
-       			<BoardContainer lines={this.state.theLines} currentWord={currentWord} answer={this.props.answer} />
+       			<GameBoard lines={this.state.lines} currentWord={this.state.currentWord} answer={this.props.answer} lineno={this.state.theCurrentLineNo} />
 				<br/><br/>
 				<Keyboard Click={(e) => this.handleButton(e)}  foundLetters={this.state.foundLetters} correctLetters={this.state.correctLetters} usedLetters={this.state.usedLetters} />
-				
-				
 			</div>
+			
+	 
 		);
 	}
 }

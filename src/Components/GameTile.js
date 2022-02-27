@@ -1,18 +1,26 @@
 import './wordle.css';
 
 function GameTile({letter, answer, id}) {
-    let num = parseInt(id);
-	let color = "#000000";  // black
-	if(letter === "") {
-		color="white";
-	} else if(answer.substr(num,1) === letter) {
-		color = "#6aaa64"; //green
-	} else if(answer.search(letter)>=0) {
-		color="#c9b458"; // yellow
+	let backgroundColor = "#000000";  // black
+	let color = "white";
+	if(answer.length === 0) {
+		backgroundColor = "white";
+		color = "black";
+	}
+	else {
+		let num = parseInt(id);
+		if(letter === "") {
+			backgroundColor="white";
+		} else if(answer.substr(num,1) === letter) {
+			backgroundColor = "#6aaa64"; //green
+		} else if(answer.search(letter)>=0) {
+			backgroundColor="#c9b458"; // yellow
+		}
 	}
 	
+	
 	return (
-		 <div className="tile" style={{backgroundColor:color}} >
+		 <div className="gametile" style={{backgroundColor:backgroundColor, color:color}} >
 		 {letter} 
 		</div>
 	);

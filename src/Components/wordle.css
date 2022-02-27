@@ -33,12 +33,12 @@
 		}		
 		*/
 		
-div.tile {
+div.gametile {
 		border: 1px solid black;
 		width: 62px;
 		height: 62px;
 		margin: 2px 2px 2px 2px;
-		color: white;
+		
 		font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
 		display: inline-block;
 		font-size: 2rem;
@@ -53,14 +53,14 @@ div.tile {
 		text-align: middle;
 }
 
-div.row {
+div.gamerow {
 		
 		width: 450px;
 		
 		
 		}
 		
-div.board {
+div.gameboard {
 	
 	margin: auto;
     width: 50%;
