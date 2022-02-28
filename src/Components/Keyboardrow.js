@@ -16,7 +16,7 @@ function Keyboardrow({letters,onClick, foundLetters, correctLetters, usedLetters
 			   <Keybutton datakey={letters[3]} onClick={()=>onClick(letters[3])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
 			   <Keybutton datakey={letters[4]} onClick={()=>onClick(letters[4])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
 			   <Keybutton datakey={letters[5]} onClick={()=>onClick(letters[5])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[6]} onClick={()=>onClick(letters[5])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
+			   <Keybutton datakey={letters[6]} onClick={()=>onClick(letters[6])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
 			   <Keybutton datakey={letters[7]} onClick={()=>onClick(letters[7])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
 			   <Keybutton datakey={letters[8]} onClick={()=>onClick(letters[8])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
 			   <Keybutton datakey={letters[9]} onClick={()=>onClick(letters[9])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>

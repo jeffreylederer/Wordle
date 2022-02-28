@@ -164,7 +164,7 @@ class Game extends React.Component {
 	render() {
 		return (
 		<>
-	   		<div onKeyDown={(e)=>this.handleKey(e)} tabIndex="-1">  
+	   		<div onKeyDown={(e)=>this.handleKey(e)} tabIndex="-1" className="Game">  
        			<GameBoard lines={this.state.lines} currentWord={this.state.currentWord} answer={this.state.answer} lineno={this.state.theCurrentLineNo} />
 				<br/><br/>
 				<Keyboard Click={(e) => this.handleButton(e)}  foundLetters={this.state.foundLetters} correctLetters={this.state.correctLetters} usedLetters={this.state.usedLetters} />

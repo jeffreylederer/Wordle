@@ -33,12 +33,20 @@
 		}		
 		*/
 		
+div.Game {
+				width: 100%;
+				max-width: 100%;
+				margin: 0 auto;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			 }		
+		
 div.gametile {
 		border: 1px solid black;
 		width: 62px;
 		height: 62px;
 		margin: 2px 2px 2px 2px;
-		
 		font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
 		display: inline-block;
 		font-size: 2rem;
@@ -62,9 +70,10 @@ div.gamerow {
 		
 div.gameboard {
 	
-	margin: auto;
-    width: 50%;
+	margin: 0 auto;
+    width: 250px;
 }
+
 hr {
 	height: 5px;
 	 background-color: black;
@@ -75,8 +84,8 @@ hr {
 /* keyboard */
 
 div.keyboard {
-	margin: auto;
-    width: 50%;
+	margin: 0 auto;
+    width: 300px;
 }
 
 div.keyboardrow {
@@ -125,6 +134,7 @@ button.largebutton {
 	cursor: pointer;
 	user-select: none;
 	border-radius: 4px;
+	background-color: #d8d8d8;
 }
 
 span.halfspacer {
@@ -139,6 +149,10 @@ span.halfspacer {
 	line-height: 2rem;
 	box-sizing: border-box;
 }
+
+
+
+
 
   
 

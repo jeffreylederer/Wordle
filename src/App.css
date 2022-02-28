@@ -47,3 +47,11 @@ body {
   #nav-button {
     padding-top: 2px;
   }
+  
+ button {
+  border-style: none;
+  color: black;
+  cursor: pointer;
+  background-color: white;
+  font-weight: bold;
+}
