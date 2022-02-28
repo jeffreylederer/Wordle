@@ -5,6 +5,7 @@ import LookupWord from './Dictionary';
 import './wordle.css';
 import GetAnswer from './Answers';
 import GetDateIndex from './Utility';
+import Modal from './Modal';
 
 class Game extends React.Component {
 	constructor(props) {
@@ -17,7 +18,10 @@ class Game extends React.Component {
 				correctLetters: "",
 				usedLetters: "",
 				currentWord: "",
-				answer: ""
+				answer: "",
+				intervalId: null,
+				modalMessage: "",
+				modalState: 0
 		};
 		this.state.answer= GetAnswer(GetDateIndex());
  	}
@@ -119,6 +123,7 @@ class Game extends React.Component {
 			}
 		}
 		if(LookupWord(currentWord) < 0) {
+			this.componentDidMount('not a word');
 			return;
 		}
 		let lines = this.state.lines.slice(0,6);
@@ -130,20 +135,45 @@ class Game extends React.Component {
 					   theCurrentLineNo: CurrentLineNo,
 					   lines: lines,
 					   currentWord: ""});
-		if(this.state.answer === currentWord)
+		if(this.state.answer === currentWord) {
 			this.setState({win : true});
+			this.componentDidMount('you win');
+		}
+	}
+	
+	componentDidMount = (message) => {
+			let intervalId = setInterval(this.timer, 3000);
+		   // store intervalId in the state so it can be accessed later:
+		this.setState({intervalId: intervalId,
+						modalMessage: message, 
+						modalState: 1
+		});
+		
+	};
+
+	timer = () => {
+	   // use intervalId from the state to clear the interval
+	   clearInterval(this.state.intervalId);
+	   this.setState({modalMessage: '', modalState: 0});
 	}
 
+
+		
 	
-   
+    
 	render() {
 		return (
+		<>
 	   		<div onKeyDown={(e)=>this.handleKey(e)} tabIndex="-1">  
-     			
        			<GameBoard lines={this.state.lines} currentWord={this.state.currentWord} answer={this.state.answer} lineno={this.state.theCurrentLineNo} />
 				<br/><br/>
 				<Keyboard Click={(e) => this.handleButton(e)}  foundLetters={this.state.foundLetters} correctLetters={this.state.correctLetters} usedLetters={this.state.usedLetters} />
 			</div>
+			<Modal show={this.state.modalState} message={this.state.modalMessage} /> 
+			
+			
+		</>
+			
 			
 	 
 		);
