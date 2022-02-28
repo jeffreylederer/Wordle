@@ -20,7 +20,7 @@ class Game extends React.Component {
 				currentWord: "",
 				answer: "",
 				intervalId: null,
-				modalMessage: "",
+				modalMessage: "lets go",
 				modalState: 0
 		};
 		this.state.answer= GetAnswer(GetDateIndex());
