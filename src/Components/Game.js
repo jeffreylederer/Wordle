@@ -1,7 +1,10 @@
 import React from 'react';
 import GameBoard from './GameBoard';
 import Keyboard from './Keyboard';
+import LookupWord from './Dictionary';
 import './wordle.css';
+import GetAnswer from './Answers';
+import GetDateIndex from './Utility';
 
 class Game extends React.Component {
 	constructor(props) {
@@ -13,10 +16,13 @@ class Game extends React.Component {
 				foundLetters: "",
 				correctLetters: "",
 				usedLetters: "",
-				currentWord: ""
+				currentWord: "",
+				answer: ""
 		};
+		this.state.answer= GetAnswer(GetDateIndex());
  	}
-
+	
+	
 	handleButton = e =>{
 		if(this.state.win)
 			return;
@@ -95,14 +101,14 @@ class Game extends React.Component {
 		let usedLetters = this.state.usedLetters;
 		for(let i=0; i< 5; i++) {
 			let letter = currentWord.substr(i,1);
-			if(this.props.answer.substr(i,1) === letter) {
+			if(this.state.answer.substr(i,1) === letter) {
 				if(correctLetters.search(letter) < 0) {
 					correctLetters = correctLetters.concat(letter);
 					if(foundLetters.search(letter)>= 0) {
 						foundLetters=foundLetters.replace(letter,"");
 					}
 				}
-			} else 	if(this.props.answer.indexOf(letter) >= 0 ) {
+			} else 	if(this.state.answer.indexOf(letter) >= 0 ) {
 				if(foundLetters.search(letter) < 0) {
 					foundLetters = foundLetters.concat(letter);
 				}
@@ -111,6 +117,9 @@ class Game extends React.Component {
 			if(correctLetters.search(letter) < 0 && foundLetters.search(letter) < 0 && usedLetters.search(letter) < 0) {
 				usedLetters = usedLetters.concat(letter);
 			}
+		}
+		if(LookupWord(currentWord) < 0) {
+			return;
 		}
 		let lines = this.state.lines.slice(0,6);
 		lines[this.state.theCurrentLineNo] = currentWord;
@@ -121,7 +130,7 @@ class Game extends React.Component {
 					   theCurrentLineNo: CurrentLineNo,
 					   lines: lines,
 					   currentWord: ""});
-		if(this.props.answer === currentWord)
+		if(this.state.answer === currentWord)
 			this.setState({win : true});
 	}
 
@@ -131,7 +140,7 @@ class Game extends React.Component {
 		return (
 	   		<div onKeyDown={(e)=>this.handleKey(e)} tabIndex="-1">  
      			
-       			<GameBoard lines={this.state.lines} currentWord={this.state.currentWord} answer={this.props.answer} lineno={this.state.theCurrentLineNo} />
+       			<GameBoard lines={this.state.lines} currentWord={this.state.currentWord} answer={this.state.answer} lineno={this.state.theCurrentLineNo} />
 				<br/><br/>
 				<Keyboard Click={(e) => this.handleButton(e)}  foundLetters={this.state.foundLetters} correctLetters={this.state.correctLetters} usedLetters={this.state.usedLetters} />
 			</div>

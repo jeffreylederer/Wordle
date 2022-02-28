@@ -16,7 +16,7 @@ function App(){
 		  </div>
 		</header>
 	<hr/><br/>
-		<Game answer="trove"/> 
+		<Game/> 
 		</div>
 	  );
 }
