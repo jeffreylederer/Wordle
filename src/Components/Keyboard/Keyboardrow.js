@@ -1,4 +1,4 @@
-import './wordle.css';
+import './keyboard.css';
 import Keybutton from './Keybutton';
 import Largebutton from './Largebutton';
 

@@ -2,7 +2,7 @@
 
 
 import './help.css';
-import Tile from './Tile';
+import Tile from './Board/Tile';
 import React, { useRef} from "react";
 import ReactDom from "react-dom";
 
@@ -38,31 +38,31 @@ export const HelpScreen = ({ setShowModal }) => {
 				<p><strong>Examples</strong></p>
 				<div className="example">
 				  <div className="gamerow">
-					<Tile letter="w" className="Tile" evaluation='correct'></Tile>
-					<Tile letter="e" className="Tile"  ></Tile>
-					<Tile letter="a" className="Tile" ></Tile>
-					<Tile letter="r" className="Tile" ></Tile>
-					<Tile letter="y" className="Tile" ></Tile>
+					<Tile letter="w" evaluation='correct'/>
+					<Tile letter="e"/>
+					<Tile letter="a"/>
+					<Tile letter="r"/>
+					<Tile letter="y"/>
 				  </div>
 				  <p>The letter <strong>W</strong> is in the word and in the correct spot.</p>
 				</div>
 				<div className="example">
 				  <div className="gamerow">
-					<Tile letter="p" className="Tile" ></Tile>
-					<Tile letter="i" className="Tile" evaluation="present"></Tile>
-					<Tile letter="l" className="Tile" ></Tile>
-					<Tile letter="l" className="Tile" ></Tile>
-					<Tile letter="s" className="Tile" ></Tile>
+					<Tile letter="p"/>
+					<Tile letter="i" evaluation="present"/>
+					<Tile letter="l"/>
+					<Tile letter="l"/>
+					<Tile letter="s"/>
 				  </div>
 				  <p>The letter <strong>I</strong> is in the word but in the wrong spot.</p>
 				</div>
 				<div className="example">
 				  <div className="gamerow">
-					<Tile letter="v" className="Tile" ></Tile>
-					<Tile letter="a" className="Tile" ></Tile>
-					<Tile letter="g" className="Tile" ></Tile>
-					<Tile letter="u" className="Tile" evaluation="absent" ></Tile>
-					<Tile letter="e" className="Tile" ></Tile>
+					<Tile letter="v"  />
+					<Tile letter="a"  />
+					<Tile letter="g"  />
+					<Tile letter="u" evaluation="absent"/>
+					<Tile letter="e"  />
 				  </div>
 				  <p>The letter <strong>U</strong> is not in the word in any spot.</p>
 				</div>

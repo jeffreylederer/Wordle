@@ -1,5 +1,5 @@
 import Keyboardrow from './Keyboardrow';
-import './wordle.css';
+import './keyboard.css';
 
 function Keyboard({Click, foundLetters, correctLetters, usedLetters}) {	
 

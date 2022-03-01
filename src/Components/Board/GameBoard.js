@@ -1,5 +1,5 @@
 import GameRow from './GameRow';
-import './wordle.css';
+import './board.css';
 
 function GameBoard({lines, currentWord, answer, lineno}) {
 	let num = parseInt(lineno);

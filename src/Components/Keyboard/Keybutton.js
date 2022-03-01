@@ -1,4 +1,4 @@
-import './wordle.css';
+import './keyboard.css';
 
 function Keybutton ({datakey, onClick, foundLetters, correctLetters, usedLetters}) {
 	let color = "#d8d8d8";

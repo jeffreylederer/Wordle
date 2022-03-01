@@ -1,6 +1,6 @@
 import React from 'react';
-import GameBoard from './GameBoard';
-import Keyboard from './Keyboard';
+import GameBoard from './Board/GameBoard';
+import Keyboard from './Keyboard/Keyboard';
 import LookupWord from './Dictionary';
 import './wordle.css';
 import GetAnswer from './Answers';

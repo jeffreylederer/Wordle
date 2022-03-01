@@ -7,7 +7,7 @@ export const Modal = ({ message }) => {
     <div className="container" >
         {message}
     </div>,
-	document.getElementById("portal")
+	document.getElementById("portal1")
   );
 }
 

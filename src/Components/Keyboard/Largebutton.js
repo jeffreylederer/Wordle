@@ -1,4 +1,4 @@
-import './wordle.css';
+import './keyboard.css';
 
 function Largebutton ({datakey, onClick}) {
 	return (

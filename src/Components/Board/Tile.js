@@ -1,8 +1,9 @@
-import './wordle.css';
+import './tile.css';
 
 function Tile({evaluation, letter}) {
-	let backgroundColor = "white";
-	let color = "black";
+	let backgroundColor = "";
+	let color = "";
+	
 	switch(evaluation)
 	{
 		case 'correct':
@@ -17,12 +18,16 @@ function Tile({evaluation, letter}) {
 			backgroundColor = "#787c7e";
 			color = "white";
 			break;
+		default:
+			backgroundColor = "white";
+			color = "black";
+
 	}
 
 	
 	
 	return (
-		 <div className="gametile" style={{backgroundColor:backgroundColor, color:color}} >
+		 <div className="tile" style={{backgroundColor:backgroundColor, color:color}} >
 		 {letter} 
 		</div>
 	);
