@@ -20,7 +20,7 @@ function GameTile({letter, answer, id}) {
 	
 	
 	return (
-		 <div className="gametile" style={{backgroundColor:backgroundColor, color:color}} >
+		 <div className="gametile width43" style={{backgroundColor:backgroundColor, color:color}} >
 		 {letter} 
 		</div>
 	);

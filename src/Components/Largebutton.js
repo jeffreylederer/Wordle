@@ -2,7 +2,7 @@ import './wordle.css';
 
 function Largebutton ({datakey, onClick}) {
 	return (
-		<button className='largebutton' onClick={onClick}>
+		<button className='largebutton width65' onClick={onClick}>
 			{datakey}
 		</button>
 	);

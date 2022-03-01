@@ -1,17 +1,16 @@
 import './modal.css';
+import ReactDom from "react-dom";
 
 
-
-function Modal({ show, message }) {
-  const showHideClassName = show==1 ? "modal display-block" : "modal display-none";
-
-  return (
-    <div className={showHideClassName}>
-      <section className="modal-main">
+export const Modal = ({ message }) => {
+   return ReactDom.createPortal (
+    <div className="container" >
         {message}
-       </section>
-    </div>
+    </div>,
+	document.getElementById("portal")
   );
 }
 
-export default Modal;
+
+
+

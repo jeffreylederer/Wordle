@@ -5,7 +5,7 @@ import LookupWord from './Dictionary';
 import './wordle.css';
 import GetAnswer from './Answers';
 import GetDateIndex from './Utility';
-import Modal from './Modal';
+import {Modal} from './Modal';
 
 class Game extends React.Component {
 	constructor(props) {
@@ -21,12 +21,12 @@ class Game extends React.Component {
 				answer: "",
 				intervalId: null,
 				modalMessage: "lets go",
-				modalState: 0
+				setShowModal: false
 		};
 		this.state.answer= GetAnswer(GetDateIndex());
  	}
 	
-	
+		
 	handleButton = e =>{
 		if(this.state.win)
 			return;
@@ -146,7 +146,7 @@ class Game extends React.Component {
 		   // store intervalId in the state so it can be accessed later:
 		this.setState({intervalId: intervalId,
 						modalMessage: message, 
-						modalState: 1
+						setShowModal: true
 		});
 		
 	};
@@ -154,7 +154,7 @@ class Game extends React.Component {
 	timer = () => {
 	   // use intervalId from the state to clear the interval
 	   clearInterval(this.state.intervalId);
-	   this.setState({modalMessage: '', modalState: 0});
+	   this.setState({modalMessage: '', setShowModal: false});
 	}
 
 
@@ -169,7 +169,8 @@ class Game extends React.Component {
 				<br/><br/>
 				<Keyboard Click={(e) => this.handleButton(e)}  foundLetters={this.state.foundLetters} correctLetters={this.state.correctLetters} usedLetters={this.state.usedLetters} />
 			</div>
-			<Modal show={this.state.modalState} message={this.state.modalMessage} /> 
+			
+				{this.state.setShowModal ? <Modal  message={this.state.modalMessage} /> : null}
 			
 			
 		</>

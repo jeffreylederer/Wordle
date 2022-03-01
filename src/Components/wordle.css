@@ -98,12 +98,10 @@ div.keyboardrow {
 
 button.keybutton {
 	border: 1px solid transparent;
-	width: 43px;
 	height: 58px;
 	margin: 2px 2px 2px 2px;
 	color: black;
 	font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-	display: inline-block;
 	font-size: 2rem;
 	line-height: 2rem;
 	font-weight: bold;
@@ -116,9 +114,18 @@ button.keybutton {
 	border-radius: 4px;
 }
 
+.width43{
+    width: 43px;
+    display: inline-block;
+}
+
+.width65{
+    width: 65px;
+    display: inline-block;
+}
+
 button.largebutton {
 	border: 1px solid transparent;
-	width: 65px;
 	height: 58px;
 	margin: 2px 2px 2px 2px;
 	color: black;
