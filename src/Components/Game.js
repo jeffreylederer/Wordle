@@ -137,7 +137,8 @@ class Game extends React.Component {
 					   currentWord: ""});
 		if(this.state.answer === currentWord) {
 			this.setState({win : true});
-			this.componentDidMount('you win');
+			let reply = ["Genius", "Magnificent", "Impressive", "Splendid", "Great", "Phew"]
+			this.componentDidMount(reply[CurrentLineNo]);
 		}
 	}
 	
