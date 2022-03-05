@@ -1,5 +1,5 @@
 import React from 'react';
-//import Keyboard from './Keyboard/Keyboard';
+import Gamekeyboard from './Keyboard/Gamekeyboard';
 import Gamerow from './Board/Gamerow';
 import LookupWord from './Dictionary';
 import GetAnswer from './Answers';
@@ -15,9 +15,6 @@ class GameApp extends React.Component {
 				animation: Array(6).fill("row"),
 				theCurrentLineNo: 0,
 				win: false,
-				foundLetters: "",
-				correctLetters: "",
-				usedLetters: "",
 				currentWord: "",
 				intervalId: null,
 				modalMessage: "lets go",
@@ -101,28 +98,6 @@ class GameApp extends React.Component {
 	
 	CheckLetters = () => {
 		let currentWord = this.state.currentWord;
-		let correctLetters=this.state.correctLetters;
-		let foundLetters=this.state.foundLetters;
-		let usedLetters = this.state.usedLetters;
-		for(let i=0; i< 5; i++) {
-			let letter = currentWord.substr(i,1);
-			if(this.state.answer.substr(i,1) === letter) {
-				if(correctLetters.search(letter) < 0) {
-					correctLetters = correctLetters.concat(letter);
-					if(foundLetters.search(letter)>= 0) {
-						foundLetters=foundLetters.replace(letter,"");
-					}
-				}
-			} else 	if(this.state.answer.indexOf(letter) >= 0 ) {
-				if(foundLetters.search(letter) < 0) {
-					foundLetters = foundLetters.concat(letter);
-				}
-			}
-			
-			if(correctLetters.search(letter) < 0 && foundLetters.search(letter) < 0 && usedLetters.search(letter) < 0) {
-				usedLetters = usedLetters.concat(letter);
-			}
-		}
 		if(LookupWord(currentWord) < 0) {
 			let animation = this.state.animation.slice();
 			animation[this.state.theCurrentLineNo] = "badrow";
@@ -132,19 +107,14 @@ class GameApp extends React.Component {
 		}
 		let lines = this.state.lines.slice(0,6);
 		lines[this.state.theCurrentLineNo] = currentWord + '\n';
-		let CurrentLineNo = this.state.theCurrentLineNo+1;
-		this.setState({correctLetters:correctLetters,
-		               foundLetters:foundLetters,
-					   usedLetters:usedLetters,
-					   theCurrentLineNo: CurrentLineNo,
-					   lines: lines,
-					   currentWord: ""});
+		let theCurrentLineNo = this.state.theCurrentLineNo+1;
+		this.setState({lines: lines, currentWord: "", theCurrentLineNo: theCurrentLineNo});
 		if(this.state.answer === currentWord) {
 			let animation = this.state.animation.slice();
-			animation[this.state.theCurrentLineNo] = "win";
+			animation[theCurrentLineNo-1] = "win";
 			this.setState({win : true, animation : animation});
 			let reply = ["Genius", "Magnificent", "Impressive", "Splendid", "Great", "Phew"]
-			this.componentDidMount(reply[CurrentLineNo]);
+			this.componentDidMount(reply[theCurrentLineNo]);
 		}
 	}
 	
@@ -182,14 +152,16 @@ class GameApp extends React.Component {
 					<Gamerow length='5' letters={this.state.theCurrentLineNo == 3?this.state.currentWord:this.state.lines[3]} answer={this.state.answer} animation={this.state.animation[3]} />
 					<Gamerow length='5' letters={this.state.theCurrentLineNo == 4?this.state.currentWord:this.state.lines[4]} answer={this.state.answer} animation={this.state.animation[4]} />
 					<Gamerow length='5' letters={this.state.theCurrentLineNo == 5?this.state.currentWord:this.state.lines[5]} answer={this.state.answer} animation={this.state.animation[5]} />
+				
+
+					
 				</div>
-			
+				
 			</div>
+								<br/><br/>
+				<Gamekeyboard lines={this.state.lines} answer={this.state.answer} onClick={this.handleButton}/>
 			{this.state.setShowModal ? <Modal  message={this.state.modalMessage} /> : null}
-		</div>
-			
-			
-	 
+		</div>	 
 		);
 	}
 }

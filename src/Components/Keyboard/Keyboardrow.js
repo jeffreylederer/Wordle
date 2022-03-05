@@ -1,64 +1,78 @@
-import './keyboard.css';
-import Keybutton from './Keybutton';
-import Largebutton from './Largebutton';
+import './gamekeyboard.css';
 
-function Keyboardrow({letters,onClick, foundLetters, correctLetters, usedLetters}) {
+
+function Keyboardrow({letters,onClick, lines, answer}) {
 
 	
 	
 	if(letters === 'qwertyuiop')
 	{
 		return (
-			<div className='keyboardrow'>
-			   <Keybutton datakey={letters[0]} onClick={()=>onClick(letters[0])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[1]} onClick={()=>onClick(letters[1])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[2]} onClick={()=>onClick(letters[2])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[3]} onClick={()=>onClick(letters[3])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[4]} onClick={()=>onClick(letters[4])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[5]} onClick={()=>onClick(letters[5])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[6]} onClick={()=>onClick(letters[6])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[7]} onClick={()=>onClick(letters[7])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[8]} onClick={()=>onClick(letters[8])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[9]} onClick={()=>onClick(letters[9])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
+		
+			<div className='row'>
+			   <button data-state = {datastate(lines, answer, 'q')} onClick={()=>onClick('q')}>q</button>
+			   <button data-state = {datastate(lines, answer, 'w')} onClick={()=>onClick('w')}>w</button>
+			   <button data-state = {datastate(lines, answer, 'e')} onClick={()=>onClick('e')}>e</button>
+			   <button data-state = {datastate(lines, answer, 'r')} onClick={()=>onClick('r')}>r</button>
+			   <button data-state = {datastate(lines, answer, 't')} onClick={()=>onClick('t')}>t</button>
+			   <button data-state = {datastate(lines, answer, 'y')} onClick={()=>onClick('y')}>y</button>
+			   <button data-state = {datastate(lines, answer, 'u')} onClick={()=>onClick('u')}>u</button>
+			   <button data-state = {datastate(lines, answer, 'i')} onClick={()=>onClick('i')}>i</button>
+			   <button data-state = {datastate(lines, answer, 'o')} onClick={()=>onClick('o')}>o</button>
+			   <button data-state = {datastate(lines, answer, 'p')} onClick={()=>onClick('p')}>p</button>
+			   
 			</div>
 		);
 	} else if(letters === 'asdfghjkl') {
 		  return ( 
-		  <div className='keyboardrow'>
-			   <Halfbutton  foundLetters={foundLetters} correctLetters={correctLetters} />
-			   <Keybutton datakey={letters[0]} onClick={()=>onClick(letters[0])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[1]} onClick={()=>onClick(letters[1])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[2]} onClick={()=>onClick(letters[2])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[3]} onClick={()=>onClick(letters[3])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[4]} onClick={()=>onClick(letters[4])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[5]} onClick={()=>onClick(letters[5])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[6]} onClick={()=>onClick(letters[5])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[7]} onClick={()=>onClick(letters[7])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[8]} onClick={()=>onClick(letters[8])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
+		  <div className='row'>
+			   <div className="spacer half" />
+			   <button data-state = {datastate(lines, answer, 'a')} onClick={()=>onClick('a')}>a</button>
+			   <button data-state = {datastate(lines, answer, 's')} onClick={()=>onClick('s')}>s</button>
+			   <button data-state = {datastate(lines, answer, 'd')} onClick={()=>onClick('d')}>d</button>
+			   <button data-state = {datastate(lines, answer, 'f')} onClick={()=>onClick('f')}>f</button>
+			   <button data-state = {datastate(lines, answer, 'g')} onClick={()=>onClick('g')}>g</button>
+			   <button data-state = {datastate(lines, answer, 'h')} onClick={()=>onClick('h')}>h</button>
+			   <button data-state = {datastate(lines, answer, 'j')} onClick={()=>onClick('j')}>j</button>
+			   <button data-state = {datastate(lines, answer, 'k')} onClick={()=>onClick('k')}>k</button>
+			   <button data-state = {datastate(lines, answer, 'l')} onClick={()=>onClick('l')}>l</button>
+			   <div className="spacer half" />
 		   </div>
 		   );
 		  
 		} else {
 			return (
-			<div className='keyboardrow'>
-			   <Largebutton datakey="Enter" onClick={()=>onClick("Enter")}  />
-			   <Keybutton datakey={letters[0]} onClick={()=>onClick(letters[0])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[1]} onClick={()=>onClick(letters[1])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[2]} onClick={()=>onClick(letters[2])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[3]} onClick={()=>onClick(letters[3])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[4]} onClick={()=>onClick(letters[4])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[5]} onClick={()=>onClick(letters[5])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Keybutton datakey={letters[6]} onClick={()=>onClick(letters[6])} foundLetters={foundLetters} correctLetters={correctLetters} usedLetters={usedLetters}/>
-			   <Largebutton datakey="<-" onClick={()=>onClick("Backspace")} />
+			<div className='row'>
+			   <button  className="one-and-a-half" onClick={()=>onClick("Enter")}>Enter</button>
+			   <button data-state = {datastate(lines, answer, 'z')} onClick={()=>onClick('z')}>z</button>
+			   <button data-state = {datastate(lines, answer, 'x')} onClick={()=>onClick('x')}>x</button>
+			   <button data-state = {datastate(lines, answer, 'c')} onClick={()=>onClick('c')}>c</button>
+			   <button data-state = {datastate(lines, answer, 'v')} onClick={()=>onClick('v')}>v</button>
+			   <button data-state = {datastate(lines, answer, 'b')} onClick={()=>onClick('b')}>b</button>
+			   <button data-state = {datastate(lines, answer, 'n')} onClick={()=>onClick('n')}>n</button>
+			   <button data-state = {datastate(lines, answer, 'm')} onClick={()=>onClick('m')}>m</button>
+			   <button  className="one-and-a-half"  onClick={()=>onClick("Backspace")}>&lt;-</button>
 		</div>
 		);
 	}
 }
 
-function Halfbutton() {
-	return (
-		<span className="halfspacer" >..</span>
-	)
+function datastate(lines, answer, letter) {
+	for(var i = 0; i< lines.length; i++) {
+		let line = lines[i].trim().replace('\n','');
+			if(line.length>0) {
+			for(var j = 0; j < line.length; j++) {
+				if(line[j] == letter && line[j] === answer[j]) {
+					return "correct";
+				}
+				if(answer.search(letter) >= 0 && line[j].search(letter)>=0) {
+					return "present";
+				}
+			}
+		}
+		
+	}
+	return "absent";	
 }
 
 
