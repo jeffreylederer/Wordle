@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Game from './Components/Game';
+import GameApp from './Components/GameApp';
 import {HelpScreen} from './Components/HelpScreen';
-import './App.css';
+import './index.css';
 
 function App(){
 	const [showModal, setShowModal] = useState(false);
@@ -14,7 +14,7 @@ function App(){
 		<div>
 		<header>
 		  <div className="menu-left">
-			<button onClick={openModal}>?</button>
+			<button onClick={openModal} id="help-button" tabIndex="-1" className="icon">?</button>
 				{showModal ? <HelpScreen setShowModal={setShowModal} /> : null}
 		  </div>
 		  <div className="title">
@@ -25,7 +25,7 @@ function App(){
 		  </div>
 		</header>
 	    <hr/><br/>
-		<Game/>   
+		<GameApp/>   
 		</div>
 	  );
 }

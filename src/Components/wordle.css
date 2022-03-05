@@ -1,37 +1,4 @@
  
-/*.Game {
-				width: 100%;
-				max-width: 100%;
-				margin: 0 auto;
-				height: 100%;
-				display: flex;
-				flex-direction: column;
-			 }
-			 
-.BoardContainer {
-			display: grid;
-			grid-template-rows: repeat(6, 1fr);
-			grid-gap: 5px;
-			padding: 10px;
-			box-sizing: border-box;
-		}	
-
-.BoardRow {
-			display: grid;
-			grid-template-columns: repeat(5, 1fr);
-			grid-gap: 5px;
-			display: block;
-		}	
-
-
-.GameTile {
-			display: grid;
-			grid-template-columns: repeat(5, 1fr);
-			grid-gap: 5px;
-			display: inline-block;
-			background-color: red;
-		}		
-		*/
 		
 div.Game {
 				width: 100%;
@@ -42,37 +9,7 @@ div.Game {
 				flex-direction: column;
 			 }		
 		
-div.gametile {
-		border: 1px solid black;
-		width: 62px;
-		height: 62px;
-		margin: 2px 2px 2px 2px;
-		font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-		display: inline-block;
-		font-size: 2rem;
-		line-height: 2rem;
-		font-weight: bold;
-		vertical-align: middle;
-		box-sizing: border-box;
-		text-transform: uppercase;
-        box-sizing: border-box;
-		padding: 16px;
-		text-align: center;
-		text-align: middle;
-}
 
-div.gamerow {
-		
-		width: 450px;
-		
-		
-		}
-		
-div.gameboard {
-	
-	margin: 0 auto;
-    width: 250px;
-}
 
 hr {
 	height: 5px;
@@ -81,81 +18,9 @@ hr {
 	color: black;
 }
 
-/* keyboard */
-
-div.keyboard {
-	margin: 0 auto;
-    width: 300px;
-}
-
-div.keyboardrow {
-	display: flex;
-	width: 100%;
-	margin: 0 auto 8px;
-}
 
 
 
-button.keybutton {
-	border: 1px solid transparent;
-	height: 58px;
-	margin: 2px 2px 2px 2px;
-	color: black;
-	font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-	font-size: 2rem;
-	line-height: 2rem;
-	font-weight: bold;
-	vertical-align: middle;
-	text-transform: uppercase;
-	box-sizing: border-box;
-	text-align: center;
-	cursor: pointer;
-	user-select: none;
-	border-radius: 4px;
-}
-
-.width43{
-    width: 43px;
-    display: inline-block;
-}
-
-.width65{
-    width: 65px;
-    display: inline-block;
-}
-
-button.largebutton {
-	border: 1px solid transparent;
-	height: 58px;
-	margin: 2px 2px 2px 2px;
-	color: black;
-	font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-	display: inline-block;
-	font-size: 1rem;
-	line-height: 2rem;
-	font-weight: bold;
-	vertical-align: middle;
-	text-transform: uppercase;
-	box-sizing: border-box;
-	text-align: center;
-	cursor: pointer;
-	user-select: none;
-	border-radius: 4px;
-	background-color: #d8d8d8;
-}
-
-span.halfspacer {
-	border: 0px solid transparent;
-	width: 40px;
-	height: 58px;
-	margin: 2px 2px 2px 2px;
-	backgroup-color: transparent;
-	color: transparent;
-	display: inline-block;
-	font-size: 2rem;
-	line-height: 2rem;
-	box-sizing: border-box;
-}
 
 
 

@@ -1,8 +1,8 @@
 /* https://javascript.plainenglish.io/how-to-create-a-popup-modal-in-react-39315907998e */
 
-
-import './help.css';
-import Tile from './Board/Tile';
+import './Board/gamerow.css';
+import './helpscreen.css';
+import Gametile from './Board/Gametile';
 import React, { useRef} from "react";
 import ReactDom from "react-dom";
 
@@ -23,12 +23,12 @@ export const HelpScreen = ({ setShowModal }) => {
 	<div className="container" ref={modalRef} onClick={closeModal}>
 		  <section>
 		  <h1>HOW TO PLAY
-		  <div className="float">
-		  <button onClick={() => setShowModal(false)}>X</button>
-		  </div>
+			
+               <button className="gameicon" onClick={() => setShowModal(false)}>X</button>
+		
 		  </h1>
 		  
-		  
+		 
 		  
 		  	<div className="instructions">
 			  <p>Guess the <strong>WORDLE</strong> in six tries.</p>
@@ -37,32 +37,32 @@ export const HelpScreen = ({ setShowModal }) => {
 			  <div className="examples">
 				<p><strong>Examples</strong></p>
 				<div className="example">
-				  <div className="gamerow">
-					<Tile letter="w" evaluation='correct'/>
-					<Tile letter="e"/>
-					<Tile letter="a"/>
-					<Tile letter="r"/>
-					<Tile letter="y"/>
+				  <div className="row" display="grid">
+					<Gametile letter="w" evaluation='correct'/>
+					<Gametile letter="e"/>
+					<Gametile letter="a"/>
+					<Gametile letter="r"/>
+					<Gametile letter="y"/>
 				  </div>
 				  <p>The letter <strong>W</strong> is in the word and in the correct spot.</p>
 				</div>
 				<div className="example">
-				  <div className="gamerow">
-					<Tile letter="p"/>
-					<Tile letter="i" evaluation="present"/>
-					<Tile letter="l"/>
-					<Tile letter="l"/>
-					<Tile letter="s"/>
+				  <div className="row" display="grid">
+					<Gametile letter="p"/>
+					<Gametile letter="i" evaluation="present"/>
+					<Gametile letter="l"/>
+					<Gametile letter="l"/>
+					<Gametile letter="s"/>
 				  </div>
 				  <p>The letter <strong>I</strong> is in the word but in the wrong spot.</p>
 				</div>
 				<div className="example">
-				  <div className="gamerow">
-					<Tile letter="v"  />
-					<Tile letter="a"  />
-					<Tile letter="g"  />
-					<Tile letter="u" evaluation="absent"/>
-					<Tile letter="e"  />
+				  <div className="row" display="grid">
+					<Gametile letter="v"/>
+					<Gametile letter="a"/>
+					<Gametile letter="g"/>
+					<Gametile letter="u" evaluation="absent"/>
+					<Gametile letter="e"/>
 				  </div>
 				  <p>The letter <strong>U</strong> is not in the word in any spot.</p>
 				</div>
@@ -74,6 +74,7 @@ export const HelpScreen = ({ setShowModal }) => {
 		  </div>,
 		  document.getElementById("portal")
 	);
-  };
+};
+
   
   

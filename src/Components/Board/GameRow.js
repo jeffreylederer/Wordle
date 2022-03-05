@@ -1,42 +1,47 @@
-import './board.css';
-import Tile from './Tile';
+import './gamerow.css';
+import Gametile from './Gametile';
 
-function BoardRow({currentWord, answer}) {
-	   
-	
+function Gamerow({letters, length, answer,animation}) {
 	
 	return (
-	
-		 <div className="gamerow">
-		 <Tile evaluation = {evaluation(0, answer, currentWord)} letter = {letter(0, currentWord)}/>
-		 <Tile evaluation = {evaluation(1, answer, currentWord)} letter = {letter(1, currentWord)} />
-		 <Tile evaluation = {evaluation(2, answer, currentWord)} letter = {letter(2, currentWord)}/>
-		 <Tile evaluation = {evaluation(3, answer, currentWord)} letter = {letter(3, currentWord)}/>
-		 <Tile evaluation = {evaluation(4, answer, currentWord)} letter = {letter(4, currentWord)}/>
+		 
+		 <div className={animation} >
+			<Gametile evaluation ={evaluation(0, answer, letters)} letter = {letters.length > 0?letters[0] :''} />
+			<Gametile evaluation ={evaluation(1, answer, letters)} letter = {letters.length > 1?letters[1] :''} />
+			<Gametile evaluation ={evaluation(2, answer, letters)} letter = {letters.length > 2?letters[2] :''} />
+			<Gametile evaluation ={evaluation(3, answer, letters)} letter = {letters.length > 3?letters[3] :''} />
+			<Gametile evaluation ={evaluation(4, answer, letters)} letter = {letters.length > 4?letters[4] :''} />
+			
+			
 		</div>
 	);
 }
 
-function evaluation(num, answer, currentWord) {
-	let result = "";  
-	
-	if(answer.length === 5) {
-		if(answer[num] ===  currentWord[num]) {
-			result = "correct";
-		} else if(answer.search(currentWord[num])>=0) {
-			result = "present";
-		} else {
-			result = "absent"
+function evaluation(num, answer, letters) {
+	let result = "tbd";  
+	if(letters.search('\n')>=0) {
+		if(letters.length > num) {
+			if(answer[num] ===  letters[num]) {
+				result = "correct";
+			} else if(answer.search(letters[num])>=0) {
+				result = "present";
+			} else {
+				result = "absent";
+			}
 		}
 	}
 	return result;
 }
 
-function letter(num, currentWord) {
-	if(currentWord.length<=num)
-		return "";
-	return currentWord[num];
-}
+/*
+			<Gametile evaluation ={evaluation(1, answer, letters)} letter = {letters.length > 1?letters[1] :''} />
+			<Gametile evaluation ={evaluation(2, answer, letters)} letter = {letters.length > 2?letters[2] :''} />
+			<Gametile evaluation ={evaluation(3, answer, letters)} letter = {letters.length > 3?letters[3] :''} />
+			<Gametile evaluation ={evaluation(4, answer, letters)} letter = {letters.length > 4?letters[4] :''} />
+			
+			<Gametile evaluation ={evaluation(1, answer, letters)} letter = {letters.length > 1?letters[1] :''} />
+			
+			*/
 
 
-export default BoardRow;
+export default Gamerow;
