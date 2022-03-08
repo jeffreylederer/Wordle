@@ -61,7 +61,7 @@
       animation: SlideOut 150ms linear;
     }
 
-    header {
+    header1 {
       display: flex;
       justify-content: center;
       align-items: center;

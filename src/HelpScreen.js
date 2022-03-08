@@ -22,7 +22,7 @@ export const HelpScreen = ({ setShowModal }) => {
 
 		<div className="container" ref={modalRef} onClick={closeModal}>
 		<section>
-			<header>
+			<header1>
 				<button className="game-icon" onClick={() => setShowModal(false)}>
 					<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
 						<path fill="var(--color-tone-1)" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
@@ -31,7 +31,7 @@ export const HelpScreen = ({ setShowModal }) => {
 		
 
 				<h1>HOW TO PLAY</h1>
-			</header>
+			</header1>
 			
     <div class="instructions">
       <p>Guess the <strong>WORDLE</strong> in six tries.</p>

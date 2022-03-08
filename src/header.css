@@ -20,7 +20,7 @@
     right: 0;
     pointer-events: none;
   }
-  .menu-left {
+div.menu-left {
     display: flex;
     margin: 0;
     padding: 0;
@@ -28,11 +28,16 @@
     width: 70px;
     justify-content: flex-start;
   }
-  .menu-right {
+div.menu-right {
     display: flex;
     width: 70px;
     justify-content: flex-end;
   }
  
-
+button.icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 4px;
+}
  
