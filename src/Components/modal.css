@@ -14,8 +14,8 @@
 
 #portal1 .container {
   position: fixed; /* or absolute */
-  top: 30%;
-  left: 50%;
+  top: 15%;
+  left: 45%;
   width: 100px;
   height: 25px;
   display: flex;

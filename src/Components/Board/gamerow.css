@@ -3,12 +3,9 @@
       display: block;
     }
 	
-   .badrow { 
+   .row[data-animation='invalid'] { 
       animation-name: Shake;
       animation-duration: 600ms;
-	  display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-gap: 5px;
     }
 	
     .row {
@@ -17,12 +14,9 @@
       grid-gap: 5px;
     }
 	
-    .win {
+    .row[data-animation='win'] {  
       animation-name: Bounce;
       animation-duration: 1000ms;
-	  grid-gap: 5px;
-	  display: grid;
-	  grid-template-columns: repeat(5, 1fr);
     }
 
     @keyframes Bounce {

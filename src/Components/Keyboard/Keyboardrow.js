@@ -66,7 +66,7 @@ function datastate(lines, answer, letter) {
 		let line = lines[i].trim().replace('\n','');
 			if(line.length>0) {
 			for(var j = 0; j < line.length; j++) {
-				if(line[j] == letter && line[j] === answer[j]) {
+				if(line[j] === letter && line[j] === answer[j]) {
 					return "correct";
 				}
 				if(answer.search(letter) >= 0 && line[j].search(letter)>=0) {

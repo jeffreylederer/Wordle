@@ -13,7 +13,7 @@ class GameApp extends React.Component {
 			super(props);
 			this.state = {
 				lines: Array(6).fill(""),
-				animation: Array(6).fill("row"),
+				animation: Array(6).fill(""),
 				theCurrentLineNo: 0,
 				win: false,
 				currentWord: "",
@@ -101,7 +101,7 @@ class GameApp extends React.Component {
 		let currentWord = this.state.currentWord;
 		if(LookupWord(currentWord) < 0) {
 			let animation = this.state.animation.slice();
-			animation[this.state.theCurrentLineNo] = "badrow";
+			animation[this.state.theCurrentLineNo] = "invalid";
 			this.setState({animation : animation});
 			this.componentDidMount('not a word');
 			return;
@@ -133,7 +133,7 @@ class GameApp extends React.Component {
 	   // use intervalId from the state to clear the interval
 	   clearInterval(this.state.intervalId);
 	   
-       this.setState({modalMessage: '', setShowModal: false, animation :Array(6).fill("row")});
+       this.setState({modalMessage: '', setShowModal: false, animation :Array(6).fill("")});
 	}
 
 
@@ -146,12 +146,12 @@ class GameApp extends React.Component {
 		<div id="game" onKeyDown={(e)=>this.handleKey(e)} tabIndex="-1">
 			<div className="board-container" >
 				<div className="board" >
-					<Gamerow length='5' letters={this.state.theCurrentLineNo == 0?this.state.currentWord:this.state.lines[0]} answer={this.state.answer} animation={this.state.animation[0]} />
-					<Gamerow length='5' letters={this.state.theCurrentLineNo == 1?this.state.currentWord:this.state.lines[1]} answer={this.state.answer} animation={this.state.animation[1]} />
-					<Gamerow length='5' letters={this.state.theCurrentLineNo == 2?this.state.currentWord:this.state.lines[2]} answer={this.state.answer} animation={this.state.animation[2]} />
-					<Gamerow length='5' letters={this.state.theCurrentLineNo == 3?this.state.currentWord:this.state.lines[3]} answer={this.state.answer} animation={this.state.animation[3]} />
-					<Gamerow length='5' letters={this.state.theCurrentLineNo == 4?this.state.currentWord:this.state.lines[4]} answer={this.state.answer} animation={this.state.animation[4]} />
-					<Gamerow length='5' letters={this.state.theCurrentLineNo == 5?this.state.currentWord:this.state.lines[5]} answer={this.state.answer} animation={this.state.animation[5]} />
+					<Gamerow length='5' letters={this.state.theCurrentLineNo === 0?this.state.currentWord:this.state.lines[0]} answer={this.state.answer} animation={this.state.animation[0]} />
+					<Gamerow length='5' letters={this.state.theCurrentLineNo === 1?this.state.currentWord:this.state.lines[1]} answer={this.state.answer} animation={this.state.animation[1]} />
+					<Gamerow length='5' letters={this.state.theCurrentLineNo === 2?this.state.currentWord:this.state.lines[2]} answer={this.state.answer} animation={this.state.animation[2]} />
+					<Gamerow length='5' letters={this.state.theCurrentLineNo === 3?this.state.currentWord:this.state.lines[3]} answer={this.state.answer} animation={this.state.animation[3]} />
+					<Gamerow length='5' letters={this.state.theCurrentLineNo === 4?this.state.currentWord:this.state.lines[4]} answer={this.state.answer} animation={this.state.animation[4]} />
+					<Gamerow length='5' letters={this.state.theCurrentLineNo === 5?this.state.currentWord:this.state.lines[5]} answer={this.state.answer} animation={this.state.animation[5]} />
 				</div>
 			</div>
 			<br/><br/>
@@ -164,13 +164,3 @@ class GameApp extends React.Component {
 
 
 export default GameApp;
-
-/*
-	   		<div onKeyDown={(e)=>this.handleKey(e)} tabIndex="-1" className="Game">  
-       			<GameBoard lines={this.state.lines} currentWord={this.state.currentWord} answer={this.state.answer} lineno={this.state.theCurrentLineNo} />
-				<br/><br/>
-				<Keyboard Click={(e) => this.handleButton(e)}  foundLetters={this.state.foundLetters} correctLetters={this.state.correctLetters} usedLetters={this.state.usedLetters} />
-			</div>
-			
-				{this.state.setShowModal ? <Modal  message={this.state.modalMessage} /> : null}
-			*/
