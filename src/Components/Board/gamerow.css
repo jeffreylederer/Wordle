@@ -20,9 +20,9 @@
     .win {
       animation-name: Bounce;
       animation-duration: 1000ms;
+	  grid-gap: 5px;
 	  display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-gap: 5px;
+	  grid-template-columns: repeat(5, 1fr);
     }
 
     @keyframes Bounce {

@@ -5,6 +5,7 @@ import LookupWord from './Dictionary';
 import GetAnswer from './Answers';
 import GetDateIndex from './Utility';
 import {Modal} from './Modal';
+import './Game.css'
 
 
 class GameApp extends React.Component {
@@ -131,9 +132,8 @@ class GameApp extends React.Component {
 	timer = () => {
 	   // use intervalId from the state to clear the interval
 	   clearInterval(this.state.intervalId);
-	   let animation = this.state.animation.slice();
-	   animation[this.state.theCurrentLineNo] = "row";
-       this.setState({modalMessage: '', setShowModal: false, animation : animation});
+	   
+       this.setState({modalMessage: '', setShowModal: false, animation :Array(6).fill("row")});
 	}
 
 
@@ -145,21 +145,17 @@ class GameApp extends React.Component {
 		return (
 		<div id="game" onKeyDown={(e)=>this.handleKey(e)} tabIndex="-1">
 			<div className="board-container" >
-				<div className="board" style={{width: "350px", height: "420px"}}>
+				<div className="board" >
 					<Gamerow length='5' letters={this.state.theCurrentLineNo == 0?this.state.currentWord:this.state.lines[0]} answer={this.state.answer} animation={this.state.animation[0]} />
 					<Gamerow length='5' letters={this.state.theCurrentLineNo == 1?this.state.currentWord:this.state.lines[1]} answer={this.state.answer} animation={this.state.animation[1]} />
 					<Gamerow length='5' letters={this.state.theCurrentLineNo == 2?this.state.currentWord:this.state.lines[2]} answer={this.state.answer} animation={this.state.animation[2]} />
 					<Gamerow length='5' letters={this.state.theCurrentLineNo == 3?this.state.currentWord:this.state.lines[3]} answer={this.state.answer} animation={this.state.animation[3]} />
 					<Gamerow length='5' letters={this.state.theCurrentLineNo == 4?this.state.currentWord:this.state.lines[4]} answer={this.state.answer} animation={this.state.animation[4]} />
 					<Gamerow length='5' letters={this.state.theCurrentLineNo == 5?this.state.currentWord:this.state.lines[5]} answer={this.state.answer} animation={this.state.animation[5]} />
-				
-
-					
 				</div>
-				
 			</div>
-								<br/><br/>
-				<Gamekeyboard lines={this.state.lines} answer={this.state.answer} onClick={this.handleButton}/>
+			<br/><br/>
+			<Gamekeyboard lines={this.state.lines} answer={this.state.answer} onClick={this.handleButton}/>
 			{this.state.setShowModal ? <Modal  message={this.state.modalMessage} /> : null}
 		</div>	 
 		);
