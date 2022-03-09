@@ -1,44 +1,46 @@
+import React from 'react';
 import './gamerow.css';
 import Tile from './Gametile';
 
-function BoardRow({length, letters, answer, animation}) {
-	   
-	
+class BoardRow extends React.Component {	   
+	render() {
 	
 	return (
-	<div style={{display: "block"}}>
-		 <div className="row" data-animation={animation}>
-			<Tile evaluation={evaluation(0, answer, letters) } letter={Getletters(0, letters)}/>
-			<Tile evaluation={evaluation(1, answer, letters) } letter={Getletters(1, letters)}/>
-			<Tile evaluation={evaluation(2, answer, letters) } letter={Getletters(2, letters)}/>
-			<Tile evaluation={evaluation(3, answer, letters) } letter={Getletters(3, letters)}/>
-			<Tile evaluation={evaluation(4, answer, letters) } letter={Getletters(4, letters)}/>
-		</div>
-		</div>
-	);
-}
+		<div style={{display: "block"}}>
+			 <div className="row" data-animation={this.props.animation}>
+				<Tile evaluation={this.evaluation(0, this.props.answer, this.props.letters) } letter={this.Getletters(0, this.props.letters)}/>
+				<Tile evaluation={this.evaluation(1, this.props.answer, this.props.letters) } letter={this.Getletters(1, this.props.letters)}/>
+				<Tile evaluation={this.evaluation(2, this.props.answer, this.props.letters) } letter={this.Getletters(2, this.props.letters)}/>
+				<Tile evaluation={this.evaluation(3, this.props.answer, this.props.letters) } letter={this.Getletters(3, this.props.letters)}/>
+				<Tile evaluation={this.evaluation(4, this.props.answer, this.props.letters) } letter={this.Getletters(4, this.props.letters)}/>
+			</div>
+			</div>
+		);
+	}
 
-function evaluation(num, answer, letters) {
-	let result = "tbd";  
-	if(letters.search('\n')<0) {
+
+	evaluation(num, answer, letters) {
+		let result = "tbd";  
+		if(letters.search('\n')<0) {
+			return result;
+		}
+		
+		if(answer[num] ===  letters[num]) {
+			result = "correct";
+		} else if(answer.search(letters[num])>=0) {
+			result = "present";
+		} else {
+			result = "absent"
+		}
+
 		return result;
 	}
-	
-	if(answer[num] ===  letters[num]) {
-		result = "correct";
-	} else if(answer.search(letters[num])>=0) {
-		result = "present";
-	} else {
-		result = "absent"
+
+	Getletters(num, letters) {
+		if(letters.length<=num)
+			return "";
+		return letters[num];
 	}
-
-	return result;
-}
-
-function Getletters(num, letters) {
-	if(letters.length<=num)
-		return "";
-	return letters[num];
 }
 
 
